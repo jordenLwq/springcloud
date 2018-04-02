@@ -1,0 +1,32 @@
+spring:
+  application:
+    name:
+      could-auth
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password :
+
+server:
+  port: 8099
+  
+   
+eureka:
+  client:
+    serviceUrl: #Eureka Server的访问地址，服务注册和client获取服务注册信息均通过该URL，多个服务注册地址用,隔开
+      defaultZone: http://admin:123@localhost:8100/eureka/
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 50   # 心跳时间，即服务续约间隔时间  生产设置5s作用（缺省为30s）
+    lease-expiration-duration-in-seconds: 100
+
+    
+    
+
+
+ribbon:
+ ReadTimeout: 60000
+ ConnectTimeout: 60000
+ MaxAutoRetries: 0
+ MaxAutoRetriesNextServer: 1 
