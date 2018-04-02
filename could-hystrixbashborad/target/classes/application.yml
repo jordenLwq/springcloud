@@ -1,0 +1,12 @@
+spring:
+  application:
+    name:
+      could-hystrixbashborad
+
+server:
+  port: 9000
+
+
+
+    
+

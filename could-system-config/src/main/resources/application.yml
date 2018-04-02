@@ -1,0 +1,31 @@
+spring:
+  profiles:
+    active:
+    - dev
+  application:
+    name: could-system-config
+  cloud: # 进行SpringCloud的相关配置
+     config: # 进行SpringCloudConfig的相关配置
+        server: # 设置服务的连接地址
+            git: # 本次使用的是GIT作为仓库的管理，所以需要设置GIT的连接地址
+              uri: git@github.com:jordenLwq/SpringCouldConfig.git
+server:
+  port: 7101
+
+
+---
+spring:
+  profiles: dev
+  application: 
+    name: microconfig-dev
+---
+spring:
+  profiles: default
+  application: 
+    name: microconfig-default
+---
+spring:
+  profiles: test
+  application: 
+    name: microconfig-test
+    

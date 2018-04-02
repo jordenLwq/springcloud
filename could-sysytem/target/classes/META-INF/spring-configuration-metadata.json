@@ -1,0 +1,18 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.jorden.li.config.DataSourceConfig",
+      "name": "spring.datasource.master",
+      "sourceMethod": "public javax.sql.DataSource masterDataSource() ",
+      "type": "javax.sql.DataSource"
+    },
+    {
+      "sourceType": "com.jorden.li.config.DataSourceConfig",
+      "name": "spring.datasource.slave",
+      "sourceMethod": "public javax.sql.DataSource slaveDataSource() ",
+      "type": "javax.sql.DataSource"
+    }
+  ],
+  "properties": []
+}

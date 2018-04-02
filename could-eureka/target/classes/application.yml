@@ -1,0 +1,30 @@
+spring:
+  application:
+    name:
+      cloud-eureka-server
+
+server:
+  port: 8100
+
+
+
+eureka:
+  server:
+    enable-self-preservation: true # 关闭自我保护模式（缺省为打开）
+    eviction-interval-timer-in-ms: 5000 # 续期时间，即扫描失效服务的间隔时间（缺省为60*1000ms）
+  client:
+    registerWithEureka: false #表示是否将自己注册到Eureka Server上，默认为true，当前应用为Eureka Server所以无需注册
+    fetchRegistry: false #表示是否从Eureka Server获取注册信息，默认为true。因为这是一个单点的Eureka Server，不需要同步其他的Eureka Server节点的数据，故而设为false。
+    serviceUrl: #Eureka Server的访问地址，服务注册和client获取服务注册信息均通过该URL，多个服务注册地址用,隔开
+      defaultZone: http://admin:123@localhost:8100/eureka/
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 50   # 心跳时间，即服务续约间隔时间  生产设置5s作用（缺省为30s）
+    lease-expiration-duration-in-seconds: 100 # 发呆时间，即服务续约到期时间 生产设置10s作用（缺省为90s）
+
+security:
+  basic:
+    enabled: true
+  user:
+    name: admin
+    password: 123

@@ -1,0 +1,52 @@
+spring:
+  application:
+    name:
+      could-getway
+
+server:
+  port: 8089
+  
+   
+eureka:
+  client:
+    serviceUrl: #Eureka Server的访问地址，服务注册和client获取服务注册信息均通过该URL，多个服务注册地址用,隔开
+      defaultZone: http://admin:123@localhost:8100/eureka/
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 50   # 心跳时间，即服务续约间隔时间  生产设置5s作用（缺省为30s）
+    lease-expiration-duration-in-seconds: 100
+
+zuul:
+  prefix: /proxy
+  ignored-services:
+            "*"
+  routes:
+    could-sysytem : /system/**
+  host:
+    socket-timeout-millis: 60000
+    connect-timeout-millis: 60000
+
+
+
+security:
+  basic:
+    enabled: false
+  user:
+    name: zuul
+    password: password
+
+ribbon : 
+  connectTimeout: 2000
+  readTimeout: 10000
+  maxAutoRetries: 1
+  maxAutoRetriesNextServer: 2
+  okToRetryOnAllOperations: true
+  okhttp.enabled: true
+  
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
